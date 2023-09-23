@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import withMT from "@material-tailwind/react/utils/withMT";
 
 const config: Config = {
   darkMode: ["class"],
@@ -85,4 +86,4 @@ const config: Config = {
   ],
 };
 
-export default config;
+export default withMT(config);

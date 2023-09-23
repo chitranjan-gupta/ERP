@@ -1,10 +1,8 @@
-import { ModeToggle } from "@/components/ui/mode";
-import { SideBar } from "@/components/ui/sidebar";
+import { Listbar } from "@/components/list";
 export default function Home() {
   return (
     <main className="">
-      <ModeToggle />
-      <SideBar />
+      <Listbar/>
     </main>
   );
 }

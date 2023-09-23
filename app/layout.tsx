@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProviders } from "@/components/theme-provider";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,14 +15,14 @@ export default function RootLayout({
         <title>ERP</title>
       </head>
       <body className={inter.className}>
-        <ThemeProvider
+        <ThemeProviders
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
           {children}
-        </ThemeProvider>
+        </ThemeProviders>
       </body>
     </html>
   );
