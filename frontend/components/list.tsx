@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
-import { List, ListItem, IconButton, ListItemPrefix, ListItemSuffix, Checkbox } from "@material-tailwind/react";
+import React, { useState } from "react"
+import {
+    List, ListItem, IconButton, ListItemPrefix, ListItemSuffix, Checkbox
+} from "@material-tailwind/react"
 import {
     TrashIcon
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/24/outline"
 export function Listbar() {
-    const [selected, setSelected] = useState<Number>(1);
-    const setSelectedItem = (value: Number) => setSelected(value);
+    const [selected, setSelected] = useState<Number>(1)
+    const setSelectedItem = (value: Number) => setSelected(value)
     return (
         <div className="w-96">
             <List>
@@ -18,7 +20,7 @@ export function Listbar() {
                         Inbox
                         <ListItemSuffix>
                             <IconButton variant="text" color="blue-gray">
-                                <TrashIcon color="blue-gray" className="h-5 w-5"/>
+                                <TrashIcon color="blue-gray" className="h-5 w-5" />
                             </IconButton>
                         </ListItemSuffix>
                     </ListItem>
@@ -31,7 +33,7 @@ export function Listbar() {
                         Trash
                         <ListItemSuffix>
                             <IconButton variant="text" color="blue-gray">
-                                <TrashIcon color="blue-gray" className="h-5 w-5"/>
+                                <TrashIcon color="blue-gray" className="h-5 w-5" />
                             </IconButton>
                         </ListItemSuffix>
                     </ListItem>
@@ -44,12 +46,12 @@ export function Listbar() {
                         Settings
                         <ListItemSuffix>
                             <IconButton variant="text" color="blue-gray">
-                                <TrashIcon color="blue-gray" className="h-5 w-5"/>
+                                <TrashIcon color="blue-gray" className="h-5 w-5" />
                             </IconButton>
                         </ListItemSuffix>
                     </ListItem>
                 </a>
             </List>
         </div>
-    );
+    )
 }

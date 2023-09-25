@@ -1,5 +1,6 @@
 "use client";
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
 export default function SignUp() {
   return (
     <>
@@ -82,5 +83,5 @@ export default function SignUp() {
         </div>
       </div>
     </>
-  );
+  )
 }

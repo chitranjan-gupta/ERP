@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState } from "react"
 import {
   Card, Typography, List, ListItem, ListItemPrefix, ListItemSuffix, Chip, Accordion, AccordionHeader,
   AccordionBody, Input
-} from "@material-tailwind/react";
+} from "@material-tailwind/react"
 import {
   PresentationChartBarIcon, ShoppingBagIcon, UserCircleIcon, Cog6ToothIcon, InboxIcon, PowerIcon
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/solid"
 import {
   ChevronRightIcon, ChevronDownIcon, MagnifyingGlassIcon, CurrencyRupeeIcon
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/24/outline"
 
 export function Sidebar() {
-  const [open, setOpen] = useState<Number>(0);
+  const [open, setOpen] = useState<Number>(0)
   const handleOpen = (value: Number) => {
-    setOpen(open === value ? 0 : value);
-  };
+    setOpen(open === value ? 0 : value)
+  }
 
   return (
     <Card className="h-[calc(100vh-6rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 left-3 top-3">
@@ -172,5 +173,5 @@ export function Sidebar() {
         </ListItem>
       </List>
     </Card>
-  );
+  )
 }

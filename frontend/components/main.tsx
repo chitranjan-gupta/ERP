@@ -1,6 +1,7 @@
 "use client";
-import { Carousel, Card } from "@material-tailwind/react";
+import React from "react"
 import Image from "next/image"
+import { Carousel, Card } from "@material-tailwind/react"
 export function Main() {
     return (
         <Card className="h-[calc(100vh-6rem)] w-full top-3 p-2 ml-5 mr-2">
@@ -48,5 +49,5 @@ export function Main() {
                 </div>
             </Carousel>
         </Card>
-    );
+    )
 }

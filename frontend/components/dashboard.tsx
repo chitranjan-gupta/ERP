@@ -1,16 +1,17 @@
 "use client";
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect } from "react"
 import {
   Navbar, Collapse, Typography, Button, Menu, MenuHandler, MenuList, MenuItem, Avatar, Card,
   IconButton
-} from "@material-tailwind/react";
+} from "@material-tailwind/react"
+import { ModeToggle } from "@/components/ui/mode"
+import { Sidebar } from "@/components/ui/sidebar"
+import { Main } from "@/components/main"
 import {
   CubeTransparentIcon, UserCircleIcon, CodeBracketSquareIcon, Square3Stack3DIcon, ChevronDownIcon,
   Cog6ToothIcon, InboxArrowDownIcon, LifebuoyIcon, PowerIcon, RocketLaunchIcon, Bars2Icon
-} from "@heroicons/react/24/outline";
-import { ModeToggle } from "@/components/ui/mode"
-import { Sidebar } from "@/components/ui/sidebar";
-import { Main } from "@/components/main";
+} from "@heroicons/react/24/outline"
+
 // profile menu component
 const profileMenuItems = [
   {
@@ -33,12 +34,12 @@ const profileMenuItems = [
     label: "Sign Out",
     icon: PowerIcon,
   },
-];
+]
 
 function ProfileMenu() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const closeMenu = () => setIsMenuOpen(false);
+  const closeMenu = () => setIsMenuOpen(false)
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -90,7 +91,7 @@ function ProfileMenu() {
         })}
       </MenuList>
     </Menu>
-  );
+  )
 }
 
 // nav list menu
@@ -110,10 +111,10 @@ const navListMenuItems = [
     description:
       "A complete set of UI Elements for building faster websites in less time.",
   },
-];
+]
 
 function NavListMenu() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
     <a href="#" key={title}>
@@ -126,7 +127,7 @@ function NavListMenu() {
         </Typography>
       </MenuItem>
     </a>
-  ));
+  ))
 
   return (
     <Fragment>
@@ -164,7 +165,7 @@ function NavListMenu() {
         {renderItems}
       </ul>
     </Fragment>
-  );
+  )
 }
 
 // nav list component
@@ -203,20 +204,20 @@ function NavList() {
         </Typography>
       ))}
     </ul>
-  );
+  )
 }
 
 export default function DashBoard() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
-  const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+  const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur)
 
   useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setIsNavOpen(false),
-    );
-  }, []);
+    )
+  }, [])
 
   return (
     <Fragment>
@@ -253,5 +254,5 @@ export default function DashBoard() {
         <Main />
       </div>
     </Fragment>
-  );
+  )
 }

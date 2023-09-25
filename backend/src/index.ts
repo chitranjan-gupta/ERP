@@ -1,18 +1,23 @@
 import path from "path"
 import { Express, Request, Response } from "express"
 import { createExpressServer } from 'routing-controllers'
-import Stripe from "stripe"
+import bodyParser from "body-parser"
 import cors from "cors"
-import config from "config"
+import Stripe from "stripe"
+import dotenv from "dotenv"
 import logger from "./utils/logger"
-const port: number = config.get<number>("port")
+dotenv.config({ path: ".env.local" })
+const port: number = Number(process.env.PORT)
 const app: Express = createExpressServer({
-    controllers: [path.join(__dirname + '/controller/*.ts')],
+    controllers: [path.join(__dirname + `/controller/*.${process.env.NODE_ENV == "development" ? "ts" : "js"}`)],
 });
-
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 app.use(cors({
-    origin:"*",
-    methods:["GET","HEAD","PUT","PATCH","POST","DELETE"]
+    origin: "*",
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"]
 }))
 app.get("/", (req: Request, res: Response) => {
     res.json("hello");
@@ -31,14 +36,14 @@ app.post("/api/checkout", async (req: Request, res: Response) => {
         },
         quantity: 1
     }]
-    const stripe = new Stripe(config.get<string>("STRIPE_SECRET_KEY"), {
+    const stripe = new Stripe(String(process.env.STRIPE_SECRET_KEY), {
         apiVersion: '2023-08-16',
     })
     const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: "payment",
-        success_url: "https://3000-chitranjangupta-erp-bcpl0k4n7cr.ws-us104.gitpod.io/success",
-        cancel_url: "https://3000-chitranjangupta-erp-bcpl0k4n7cr.ws-us104.gitpod.io/cancel"
+        success_url: String(process.env.STRIPE_SUCCESS_URL),
+        cancel_url: String(process.env.STRIPE_CANCEL_URL)
     })
     res.json({ sessionid: session.id })
 })

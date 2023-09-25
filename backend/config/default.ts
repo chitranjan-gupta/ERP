@@ -1,5 +1,0 @@
-export default {
-    port:8080,
-    STRIPE_PUBLISHABLE_KEY:"pk_test_51Nu8YnSF5BZ9FQQIFpEWdoAmVzbNbzglNSBQA2xyvdcM0L8b59kelkisQqOfVMohldrQMed0cXsBkpL6lYtc8SDR00K6v5tEAy",
-    STRIPE_SECRET_KEY:"sk_test_51Nu8YnSF5BZ9FQQINfcfra5JCQfU0E1OH5lvpMmbwW8QgnBi1W0EcBlBo8AmomzVAAcEVd9fcjyPOAdRkjD3iQO300rIgBCqzk"
-}
