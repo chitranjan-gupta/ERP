@@ -25,28 +25,58 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/ping", (req: Request, res: Response) => {
     res.send("pong");
 })
+app.get("/config", async (req: Request, res: Response) => {
+    res.json({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY });
+});
 app.post("/api/checkout", async (req: Request, res: Response) => {
-    const lineItems = [{
-        price_data: {
-            currency: "inr",
-            product_data: {
-                name: "Cup"
+    try {
+        const lineItems = [{
+            price_data: {
+                currency: "inr",
+                product_data: {
+                    name: "Cup"
+                },
+                unit_amount: 100
             },
-            unit_amount: 100
-        },
-        quantity: 1
-    }]
-    const stripe = new Stripe(String(process.env.STRIPE_SECRET_KEY), {
-        apiVersion: '2023-08-16',
-    })
-    const session = await stripe.checkout.sessions.create({
-        line_items: lineItems,
-        mode: "payment",
-        success_url: String(process.env.STRIPE_SUCCESS_URL),
-        cancel_url: String(process.env.STRIPE_CANCEL_URL)
-    })
-    res.json({ sessionid: session.id })
+            quantity: 1
+        }]
+        const stripe = new Stripe(String(process.env.STRIPE_SECRET_KEY), {
+            apiVersion: '2023-08-16',
+        })
+        const session = await stripe.checkout.sessions.create({
+            line_items: lineItems,
+            mode: "payment",
+            success_url: String(process.env.STRIPE_SUCCESS_URL),
+            cancel_url: String(process.env.STRIPE_CANCEL_URL)
+        })
+        res.json({ sessionid: session.id })
+    } catch (e: any) {
+        return res.status(400).send({
+            error: {
+                message: e.message,
+            },
+        });
+    }
 })
+app.post("/create-payment-intent", async (req: Request, res: Response) => {
+    try {
+        const stripe = new Stripe(String(process.env.STRIPE_SECRET_KEY), {
+            apiVersion: '2023-08-16',
+        })
+        const paymentIntent = await stripe.paymentIntents.create({
+            currency: "inr",
+            amount: 1999,
+            automatic_payment_methods: { enabled: true },
+        });
+        res.json({ clientsecret: paymentIntent.client_secret });
+    } catch (e: any) {
+        return res.status(400).send({
+            error: {
+                message: e.message,
+            },
+        });
+    }
+});
 app.listen(port, () => {
     logger.info(`App is running at http://localhost:${port}`)
 })
