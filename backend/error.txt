@@ -1,0 +1,25 @@
+[INFO] 06:42:44 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 5.2.2)
+Error [ERR_REQUIRE_ESM]: require() of ES Module /workspace/ERP/backend/node_modules/node-fetch/src/index.js from /workspace/ERP/backend/src/service/paypal.service.ts not supported.
+Instead change the require of index.js in /workspace/ERP/backend/src/service/paypal.service.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions..jsx.require.extensions..js (/tmp/ts-node-dev-hook-9900580021191501.js:114:20)
+    at Object.nodeDevHook [as .js] (/workspace/ERP/backend/node_modules/ts-node-dev/lib/hook.js:63:13)
+    at Object.<anonymous> (/workspace/ERP/backend/src/service/paypal.service.ts:17:38)
+    at Module._compile (/workspace/ERP/backend/node_modules/source-map-support/source-map-support.js:568:25)
+    at m._compile (/tmp/ts-node-dev-hook-9900580021191501.js:69:33)
+    at require.extensions..jsx.require.extensions..js (/tmp/ts-node-dev-hook-9900580021191501.js:114:20)
+    at require.extensions.<computed> (/tmp/ts-node-dev-hook-9900580021191501.js:71:20)
+    at Object.nodeDevHook [as .ts] (/workspace/ERP/backend/node_modules/ts-node-dev/lib/hook.js:63:13)
+    at Object.<anonymous> (/workspace/ERP/backend/src/index.ts:22:26)
+    at Module._compile (/workspace/ERP/backend/node_modules/source-map-support/source-map-support.js:568:25)
+    at m._compile (/tmp/ts-node-dev-hook-9900580021191501.js:69:33)
+    at require.extensions..jsx.require.extensions..js (/tmp/ts-node-dev-hook-9900580021191501.js:114:20)
+    at require.extensions.<computed> (/tmp/ts-node-dev-hook-9900580021191501.js:71:20)
+    at Object.nodeDevHook [as .ts] (/workspace/ERP/backend/node_modules/ts-node-dev/lib/hook.js:63:13)
+    at Object.<anonymous> (/workspace/ERP/backend/node_modules/ts-node-dev/lib/wrap.js:104:1)
+    at Module._compile (/workspace/ERP/backend/node_modules/source-map-support/source-map-support.js:568:25)
+    at require.extensions..jsx.require.extensions..js (/tmp/ts-node-dev-hook-9900580021191501.js:95:24)
+[ERROR] 06:42:44 Error: require() of ES Module /workspace/ERP/backend/node_modules/node-fetch/src/index.js from /workspace/ERP/backend/src/service/paypal.service.ts not supported.
+Instead change the require of index.js in /workspace/ERP/backend/src/service/paypal.service.ts to a dynamic import() which is available in all CommonJS modules.
+
+
+@*** It happened due to node-fetch module in typescript

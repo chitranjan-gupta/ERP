@@ -54,11 +54,11 @@ export function Stripepayment() {
     const [clientSecret, setClientSecret] = useState<string>()
 
     useEffect(() => {
-        fetch("https://8080-chitranjangupta-erp-bcpl0k4n7cr.ws-us105.gitpod.io/config").then(async (res) => {
+        fetch(String(process.env.NEXT_PUBLIC_STRIPE_CONFIG_URL)).then(async (res) => {
             const { publishableKey } = await res.json();
             setStripePromise(loadStripe(publishableKey));
         })
-        fetch("https://8080-chitranjangupta-erp-bcpl0k4n7cr.ws-us105.gitpod.io/create-payment-intent", {
+        fetch(String(process.env.NEXT_PUBLIC_STRIPE_PAYMENT_INTENT_URL), {
             method: "POST",
             body: JSON.stringify({}),
         }).then(async (res) => {

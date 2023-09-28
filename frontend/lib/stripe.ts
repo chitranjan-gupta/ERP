@@ -1,8 +1,10 @@
 import { loadStripe } from '@stripe/stripe-js';
 
 export async function makePayment(): Promise<void> {
-    const stripe = await loadStripe(String(process.env.NEXT_PUBLIC_STRIPE_PUBLISHER_KEY));
-    const res = await fetch(String(process.env.NEXT_PUBLIC_STRIPE_CHECKOUT), {
+    const getKey = await fetch(String(process.env.NEXT_PUBLIC_STRIPE_CONFIG_URL))
+    const { publishableKey } = await getKey.json();
+    const stripe = await loadStripe(publishableKey);
+    const res = await fetch(String(process.env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL), {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
